@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SessionController extends Controller
 {
@@ -20,17 +21,25 @@ class SessionController extends Controller
         session(['hakAkses' => 'admin', 'nama' => 'Anto']);
         return "Session sudah dibuat";
     }
-    public function aksesSession()
+    public function aksesSession(Request $request)
     {
-        echo session('hakAkses');
-        echo session('nama');
+        // echo session('hakAkses');
+        // echo session('nama');
+        // dump(session()->all());
+        // $isiSession = $request->session()->get('kota', 'Jakarta');
+        // echo "Isi session adalah $isiSession";
+        if (session()->has('hakAkses')) {
+            echo "Session 'hakAkses' terdeteksi: " . session('hakAkses');
+        }
     }
     public function hapusSession()
     {
-        //
+        session()->flush();
+        echo "Semua session sudah dihapus";
     }
     public function flashSession()
     {
-        //
+        session()->flash('hakAkses', 'admin');
+        echo "Flash session hakAkses sudah dibuat";
     }
 }
