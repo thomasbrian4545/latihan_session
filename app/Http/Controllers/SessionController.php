@@ -17,7 +17,8 @@ class SessionController extends Controller
     }
     public function buatSession()
     {
-        //
+        session(['hakAkses' => 'admin', 'nama' => 'Anto']);
+        return "Session sudah dibuat";
     }
     public function aksesSession()
     {
