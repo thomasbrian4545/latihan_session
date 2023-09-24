@@ -22,7 +22,8 @@ class SessionController extends Controller
     }
     public function aksesSession()
     {
-        //
+        echo session('hakAkses');
+        echo session('nama');
     }
     public function hapusSession()
     {
